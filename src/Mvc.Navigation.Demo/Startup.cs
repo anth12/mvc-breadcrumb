@@ -1,8 +1,11 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Mvc.Navigation.Demo.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,11 +30,15 @@ namespace Mvc.Navigation.Demo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseInMemoryDatabase("demo"));
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddHttpContextAccessor();
             services.AddNavigation();
-            services.AddSingleton<ITreeBuilder, MyClass>();
+            services.AddTransient<ITreeBuilder, MyClass>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,21 +47,32 @@ namespace Mvc.Navigation.Demo
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseAuthentication();
 
             app.UseNavigation();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
 
-        public class MyClass :ITreeBuilder
+
+        public class MyClass : ITreeBuilder
         {
             public IEnumerable<TreeElement> GetElements()
             {
@@ -76,16 +94,20 @@ namespace Mvc.Navigation.Demo
                 {
                     Name = "Contact",
                     Path = "/contact",
+                    AuthenticatedOnly = true,
                     Children = new[]
                     {
                         new TreeElement
                         {
                             Name = "Support",
-                            Path = "/contact/support"
+                            Path = "/contact/support",
+                            RequiredRoles = new []{"test"}
                         }
                     }
                 };
             }
         }
+
+
     }
 }

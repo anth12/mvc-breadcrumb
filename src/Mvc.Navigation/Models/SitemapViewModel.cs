@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mvc.Navigation.Models
 {
-    class SitemapViewModel
+    public class SitemapViewModel
     {
     }
 }

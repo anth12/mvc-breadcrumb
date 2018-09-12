@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc.Navigation", "Mvc.Navigation\Mvc.Navigation.csproj", "{43CCE050-C434-49E5-BB81-0442C79060CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc.Navigation.Demo", "Mvc.Navigation.Demo\Mvc.Navigation.Demo.csproj", "{027992EC-EEA4-40B5-8F44-0C9683CD487F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc.Navigation.Demo", "Mvc.Navigation.Demo\Mvc.Navigation.Demo.csproj", "{36E0B69D-5950-47CB-B12F-2D116DD2679B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc.Navigation", "Mvc.Navigation\Mvc.Navigation.csproj", "{725ABEC8-CBA8-4509-965F-E9B408A8BE71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{43CCE050-C434-49E5-BB81-0442C79060CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43CCE050-C434-49E5-BB81-0442C79060CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43CCE050-C434-49E5-BB81-0442C79060CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43CCE050-C434-49E5-BB81-0442C79060CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36E0B69D-5950-47CB-B12F-2D116DD2679B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36E0B69D-5950-47CB-B12F-2D116DD2679B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36E0B69D-5950-47CB-B12F-2D116DD2679B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36E0B69D-5950-47CB-B12F-2D116DD2679B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{027992EC-EEA4-40B5-8F44-0C9683CD487F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{027992EC-EEA4-40B5-8F44-0C9683CD487F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{027992EC-EEA4-40B5-8F44-0C9683CD487F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{027992EC-EEA4-40B5-8F44-0C9683CD487F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725ABEC8-CBA8-4509-965F-E9B408A8BE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725ABEC8-CBA8-4509-965F-E9B408A8BE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725ABEC8-CBA8-4509-965F-E9B408A8BE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725ABEC8-CBA8-4509-965F-E9B408A8BE71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

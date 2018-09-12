@@ -1,10 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Mvc.Navigation.Models;
 
 namespace Mvc.Navigation.Providers
 {
-    class SitemapProvider
+    internal class SitemapProvider : ISitemapProvider
     {
+        public SitemapViewModel GetSitemapModel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

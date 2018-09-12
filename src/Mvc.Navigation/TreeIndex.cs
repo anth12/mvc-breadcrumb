@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Mvc.Navigation
 {
     public class TreeIndex
     {
-        public Dictionary<Guid, TreeElement> FlatItems { get; } = new Dictionary<Guid, TreeElement>();
+        public Dictionary<string, TreeElement> FlatItems { get; } = new Dictionary<string, TreeElement>();
 
         public HashSet<TreeElement> RootElements { get; } = new HashSet<TreeElement>();
 
@@ -15,12 +14,17 @@ namespace Mvc.Navigation
 
             void AddToIndex(TreeElement treeElement)
             {
-                FlatItems.Add(treeElement.Id, treeElement);
+                if (!string.IsNullOrEmpty(treeElement.Path))
+                {
+                    FlatItems.Add(treeElement.Path.ToLower().Trim('/'), treeElement);
+                }
+
 
                 if (treeElement.Children != null)
                 {
                     foreach (var child in treeElement.Children)
                     {
+                        child.Parent = treeElement;
                         AddToIndex(child);
                     }
                 }

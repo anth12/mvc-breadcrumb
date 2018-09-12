@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Mvc.Navigation.Builders;
+using Mvc.Navigation.Filters;
+using Mvc.Navigation.Helpers;
 using Mvc.Navigation.Providers;
 
 namespace Mvc.Navigation
@@ -14,11 +17,25 @@ namespace Mvc.Navigation
 
             services.AddTransient<ITreeBuilder, DefaultMvcTreeBuilder>();
 
-            services.AddTransient<NavigationProvider>();
-            services.AddTransient<BreadcrumbProvider>();
-            services.AddTransient<SitemapProvider>();
+            services.AddTransient<INavigationFilter, AuthenticationFilter>();
+
+            services.AddTransient<INavigationProvider, NavigationProvider>();
+            services.AddTransient<IBreadcrumbProvider, BreadcrumbProvider>();
+            services.AddTransient<ISitemapProvider, SitemapProvider>();
+
+            services.AddSingleton<ActivePathHelper>();
 
             return services;
+
+            /*
+             *
+             * c<HomeController>(a=> a.Index)
+             *  .Children(
+             *      a=> a.Child1,
+             *      a=> a.Child2,
+             * )
+             *
+             */
         }
 
         public static IApplicationBuilder UseNavigation(this IApplicationBuilder app)

@@ -1,0 +1,6 @@
+﻿@model NavigationViewModel
+
+    @foreach (var rootItem in Model.Root)
+    {
+        <partial name="/Views/Shared/_TreeElement.cshtml" model="rootItem" />
+    }

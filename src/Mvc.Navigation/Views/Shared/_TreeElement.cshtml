@@ -1,0 +1,21 @@
+﻿@model TreeElementViewModel
+
+
+<li class="@(Model.IsChildActive ? "active open" : Model.IsActive ? "active" : "")">
+    <a href="@Model.Path">
+        <i class="fa fa-@Model.CssClass"></i> @Model.Name
+        @if (Model.Children.Any())
+        {
+            <i class="fa arrow"></i>
+        }
+    </a>
+    @if (Model.Children.Any())
+    {
+        <ul class="sidebar-nav">
+            @foreach(var child in Model.Children)
+            {
+                <partial name="/Views/Shared/_TreeElement.cshtml" model="child" />
+            }
+        </ul>
+    }
+</li>

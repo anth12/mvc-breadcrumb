@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Mvc.Navigation.Models
 {
-    class BreadcrumbViewModel
+    public class BreadcrumbViewModel
     {
+        public List<TrailViewModel> Trail { get; set; }
     }
 }
