@@ -6,12 +6,19 @@ namespace Mvc.Navigation.Helpers
     {
         internal bool IsActive(string itemPath, string currentPath)
         {
-            if (!itemPath.EndsWith("/"))
-                itemPath += "/";
-            if (!currentPath.EndsWith("/"))
-                currentPath += "/";
 
-            return currentPath.StartsWith(itemPath, StringComparison.OrdinalIgnoreCase);
+            return currentPath.Equals(Sanitise(itemPath), StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal string Sanitise(string path)
+        {
+            if (path.StartsWith("/"))
+                path = path.Substring(1, path.Length - 1);
+
+            if (path.EndsWith("/"))
+                path = path.Substring(0, path.Length - 1);
+
+            return path.ToLower();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Mvc.Navigation
             {
                 if (!string.IsNullOrEmpty(treeElement.Path))
                 {
-                    FlatItems.Add(treeElement.Path.ToLower().Trim('/'), treeElement);
+                    FlatItems[treeElement.Path.ToLower().Trim('/')] = treeElement;
                 }
 
 

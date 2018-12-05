@@ -9,14 +9,14 @@
     <PackageIconUrl>https://raw.githubusercontent.com/anth12/mvc-navigation/master/logo.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>mvc, navigation, breadcrumb, sitemap</PackageTags>
-    <Version>1.0.0-Preview3</Version>
+    <Version>1.0.0-Preview5</Version>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RazorCompileOnBuild>true</RazorCompileOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
   </ItemGroup>
 
   <ItemGroup>

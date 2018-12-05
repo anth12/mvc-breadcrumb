@@ -40,9 +40,12 @@ namespace Mvc.Navigation
 
         public static IApplicationBuilder UseNavigation(this IApplicationBuilder app)
         {
-            var treeConstructor = app.ApplicationServices.GetService<TreeConstructor>();
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var treeConstructor = scope.ServiceProvider.GetService<TreeConstructor>();
 
-            treeConstructor.Build();
+                treeConstructor.Build();
+            }
 
             return app;
         }

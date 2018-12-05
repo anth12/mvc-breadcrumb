@@ -23,7 +23,7 @@ namespace Mvc.Navigation.Providers
 
         public NavigationViewModel GetNavigationModel()
         {
-            var requestPath = _httpContext.HttpContext.Request.Path.Value.ToLower();
+            var requestPath = _pathHelper.Sanitise(_httpContext.HttpContext.Request.Path.Value);
             
             IEnumerable<TreeElementViewModel> MapViewModel(IEnumerable<TreeElement> elements)
             {
