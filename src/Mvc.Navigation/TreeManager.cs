@@ -3,12 +3,12 @@ using System.Linq;
 
 namespace Mvc.Navigation
 {
-    internal class TreeConstructor
-    {
+    internal class TreeManager : ITreeManager
+	{
         private readonly IEnumerable<ITreeBuilder> _providers;
         private readonly TreeIndex _index;
 
-        public TreeConstructor(IEnumerable<ITreeBuilder> providers, TreeIndex index)
+        public TreeManager(IEnumerable<ITreeBuilder> providers, TreeIndex index)
         {
             _providers = providers;
             _index = index;

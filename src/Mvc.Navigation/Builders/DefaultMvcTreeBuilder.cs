@@ -2,7 +2,7 @@
 
 namespace Mvc.Navigation.Builders
 {
-    public class DefaultMvcTreeBuilder : ITreeBuilder
+    internal class DefaultMvcTreeBuilder : ITreeBuilder
     {
 
         public IEnumerable<TreeElement> GetElements()

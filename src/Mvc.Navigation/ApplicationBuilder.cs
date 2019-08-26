@@ -13,7 +13,7 @@ namespace Mvc.Navigation
         public static IServiceCollection AddNavigation(this IServiceCollection services)
         {
             services.AddSingleton<TreeIndex>();
-            services.AddTransient<TreeConstructor>();
+            services.AddTransient<ITreeManager, TreeManager>();
 
             services.AddTransient<ITreeBuilder, DefaultMvcTreeBuilder>();
 
@@ -42,7 +42,7 @@ namespace Mvc.Navigation
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                var treeConstructor = scope.ServiceProvider.GetService<TreeConstructor>();
+                var treeConstructor = scope.ServiceProvider.GetService<ITreeManager>();
 
                 treeConstructor.Build();
             }
